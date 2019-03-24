@@ -16,7 +16,13 @@ Route::get('/','Lab1@getLogin');
 Route::post('/','Lab1@store');
 Route::get('/session_del','Lab1@destroy')->name('session_del');
 
-Route::get('/home',);
+Route::get('/reg','Lab1@getReg');
+Route::post('/reg','Lab1@storeUser');
+
+Route::group(['middleware' => ['login']], function () {
+    Route::get('/home','HomePage@index');
+});
+
 
 
 

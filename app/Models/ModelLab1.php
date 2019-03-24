@@ -13,6 +13,12 @@ use App\Models\Navigacija;
 class ModelLab1
 {
 
+    public $ime;
+    public $prezime;
+    public $kor_ime;
+    public $lozinka;
+
+
     public function DohvatiProizvodi(){
 
         $rez = DB::table('proizvodi')->get();
@@ -27,7 +33,21 @@ class ModelLab1
                 ['korisnicko_ime',$kor_ime],
                 ['lozinka',md5($pass)]
             ])
-            ->get();
+            ->first();
         return $rez;
     }
+
+    public function  insertUser(){
+
+        DB::table('korisnici')
+            ->insert([
+                'ime' => $this->ime,
+                'prezime' => $this->prezime,
+                'korisnicko_ime' => $this->kor_ime,
+                'lozinka' => md5($this->lozinka),
+                'id_uloga' => 2
+            ]);
+    }
+
+
 }

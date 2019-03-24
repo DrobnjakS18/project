@@ -3,28 +3,34 @@
     Pocetna
     @endsection
 @section('sadrzaj')
+
     <div class="col-lg-9">
 
         <div class="row my-4">
 
-            @foreach($podaci as $pro)
-            <!-- Proizvod -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="images/img01.jpg" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="#">{{$pro->naziv}}</a>
-                        </h4>
-                        <h5>{{$pro->cena}}</h5>
-                        <p class="card-text">{{$pro->opis}}</p>
-                        <input type="hidden" id="id" name="id" value="{{$pro->id_proizvod}}"/>
-                    </div>
-                </div>
-            </div>
-            <!--// Proizvod -->
-            @endforeach
+            <input type="date" name="datum"/>
+            <select name="mesto_od">
+                <option value="0">Izaberite</option>
+            </select>
+            <select name="mesto_do">
+                <option value="0">Izaberite</option>
+            </select>
 
+
+            <form action="{{asset('/')}}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label> Korisničko ime: </label>
+                    <input type="text" id="korisnickoIme" name="tbKorisnickoIme" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label> Lozinka: </label>
+                    <input type="password" id="lozinka" name="tbLozinka" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" id="login" name="btnLogin" class="btn btn-default"/>
+                </div>
+            </form>
 
         </div>
 

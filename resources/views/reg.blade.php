@@ -1,15 +1,20 @@
 @extends('layout.template')
-@section('title')
-    Login
-@endsection
-@section('login')
 
+@section('reg')
     <div class="login-form my-4">
 
-        <h2>Login forma</h2>
+        <h2>Registracija forma</h2>
 
-        <form action="{{asset('/')}}" method="POST">
+        <form action="{{asset('/reg')}}" method="POST">
             @csrf
+            <div class="form-group">
+                <label>Ime: </label>
+                <input type="text" id="korisnickoIme" name="tbIme" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label>Prezime: </label>
+                <input type="text" id="korisnickoIme" name="tbPrezime" class="form-control"/>
+            </div>
             <div class="form-group">
                 <label> Korisničko ime: </label>
                 <input type="text" id="korisnickoIme" name="tbKorisnickoIme" class="form-control"/>
@@ -22,14 +27,13 @@
                 <input type="submit" id="login" name="btnLogin" class="btn btn-default"/>
             </div>
         </form>
-        @if(session('log_error'))
+        @if ($errors->any())
             <div class="alert alert-danger">
-                {{session('log_error')}}
-            </div>
-        @endif
-        @if(session('Reg_success'))
-            <div class="alert alert-success">
-                {{session('Reg_success')}}
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
         @endif
     </div>

@@ -1,15 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: DrobnjakS
- * Date: 3/24/2019
- * Time: 3:34 PM
- */
 
 namespace App\Http\Controllers;
 
+use App\Models\ModelLab1;
+use Illuminate\Http\Request;
 
-class HomePage
+class HomePage extends BaseController
 {
+    public function index(){
 
+        $baza = new ModelLab1();
+        $rez = $baza->DohvatiProizvodi();
+        $this->data['podaci'] = $rez;
+////
+//        $filter = $kat->DohvatiJednu($id);
+//        $data['filter'] = $filter;
+       return view('index',$this->data);
+
+
+    }
 }

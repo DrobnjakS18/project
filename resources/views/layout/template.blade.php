@@ -23,5 +23,6 @@
     @include('include.side')
     @yield('sadrzaj')
     @yield('login')
+    @yield('reg')
 </div>
 @include('include.footer')
