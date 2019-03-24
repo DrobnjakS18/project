@@ -12,12 +12,6 @@ use App\Models\Navigacija;
 
 class ModelLab1
 {
-    public $data;
-    public function __construct()
-    {
-        $meni = new Navigacija();
-        $this->data['meni'] = $meni->get();
-    }
 
     public function DohvatiProizvodi(){
 
@@ -31,7 +25,7 @@ class ModelLab1
             ->join('uloge','korisnici.id_uloga','=','uloge.id_uloga')
             ->where([
                 ['korisnicko_ime',$kor_ime],
-                ['lozinka',$pass]
+                ['lozinka',md5($pass)]
             ])
             ->get();
         return $rez;

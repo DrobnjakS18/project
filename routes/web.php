@@ -11,12 +11,16 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 
-Route::get('/','Lab1@index');
+Route::get('/','Lab1@getLogin');
+Route::post('/','Lab1@store');
+Route::get('/session_del','Lab1@destroy')->name('session_del');
+
+Route::get('/home',);
+
+
+
+
+
 
 //Route::get('/muske_patike/{id}','Lab1@index');
-
-Route::post('/login','Lab1@show')->name('login');
