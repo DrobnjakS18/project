@@ -49,5 +49,15 @@ class ModelLab1
             ]);
     }
 
+    public function profile($id){
+
+        return DB::table('rezervacija as r')
+            ->select('*','r.id as RezID')
+            ->join('korisnici','r.kor_id','=','korisnici.id_korisnik')
+            ->join('ruta','r.ruta_id','=','ruta.id')
+            ->where('kor_id',$id)
+            ->first();
+    }
+
 
 }

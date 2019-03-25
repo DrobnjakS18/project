@@ -18,10 +18,22 @@ Route::get('/session_del','Lab1@destroy')->name('session_del');
 
 Route::get('/reg','Lab1@getReg');
 Route::post('/reg','Lab1@storeUser');
+Route::get('/home','HomePage@index');
+Route::get('/datum_filter/{id}','HomePage@datum_filter');
 
 Route::group(['middleware' => ['login']], function () {
-    Route::get('/home','HomePage@index');
+    Route::get('/rez/{id}/{id_kor}','HomePage@rezervazija')->name('rez');
+    Route::get('/profile/{id}','HomePage@profile')->name('profile');
+    Route::get('/del_rez/{id}','HomePage@del_rez')->name('del_rez');
 });
+
+Route::group(['middleware' => ['admin']], function () {
+    Route::get('/admin','Admin@index');
+    Route::post('/admin','Admin@store');
+});
+
+
+
 
 
 

@@ -24,5 +24,7 @@
     @yield('sadrzaj')
     @yield('login')
     @yield('reg')
+    @yield('admin')
+    @yield('profile')
 </div>
 @include('include.footer')
